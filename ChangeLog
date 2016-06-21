@@ -1,0 +1,148 @@
+libcaldav (0.6.5-2debian2) maverick; urgency=low
+
+  * Fixed RECURRENCE-ID modification with Zimbra CalDAV resources
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Sat, 28 Aug 2010 16:34:00 -0600
+
+libcaldav (0.6.4-0debian0) lenny; urgency=low
+
+  * Added VTODO support
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Fri, 27 Aug 2010 18:53:00 -0600
+
+libcaldav (0.6.3-0debian1) lenny; urgency=low
+
+  * Multiple VEVENT blocks in a single CardDAV response are now returned correctly
+
+ -- Timothy Pearson <kb9vqf@pearsoncomputing.net>  Thu, 26 Aug 2010 15:40:00 -0600
+
+libcaldav (0.6.2)
+  * Fix bug to be able to handle HTTP HEADER lines split
+    over multiple lines. Patch provided by Timothy Pearson
+
+-- Michael Rasmussen <mir@datanom.net>  Tue, 25 May 2010 22:51:03 +0100
+
+libcaldav (0.6.1)
+  * Fix redirection bug to fully support Zimbra server. Patch
+    provided by Timothy Pearson
+
+-- Michael Rasmussen <mir@datanom.net>  Tue, 25 May 2010 22:51:03 +0100
+
+libcaldav (0.6.0)
+  * Refactored to properly handle URL schema. Also fixes bug 2985320
+  * More accurate error message in case of unresolable host or unable
+    to get a connection. fixes feature request 2985321
+  * Added support for FREEBUSY search
+  * Fix bug 3003201. Solution provided by Dmitry Savenko
+
+-- Michael Rasmussen <mir@datanom.net>  Mon, 12 Apr 2010 12:15:03 +0100
+
+libcaldav (0.5.2)
+  * Added a unit like testing framework
+  * Make the use of locking configurable
+  * Extend testing framework to test for this
+
+-- Michael Rasmussen <mir@datanom.net>  Thu, 8 Apr 2010 12:15:03 +0100
+
+libcaldav (0.5.1)
+  * Honor request 2981083. Implement a response_free function
+  * Honor request 2981100. Implement a runtime_info creation function
+  * Fix bug 2981096. A number of memory leaks
+  * Complete refactoring. Implement basic setup of curl instance in a
+    function which all other function uses to ease maintainability and
+    simplicity and to reduce the number of repeated code lines.
+
+-- Michael Rasmussen <mir@datanom.net>  Sat, 3 Apr 2010 03:29:03 +0100
+
+libcaldav (0.5.0)
+  * Make library thread-safe. Close bug 2971102.
+  * Changed test application accordingly.
+  * Fix a number of memory leaks.
+  * Fix a number of double frees.
+  * fix regression introduced in revision 9 which broke locking
+    in delete and modify.
+  * Enhanced the error reporting for lock requests.
+  * Fix some potential memory leaks.
+  * Fix bug in parsing URL for username and password.
+  * Fix pedantic behaviour from Google which chokes on URL's
+    containing //
+  * Fix bug so that get_etag also is able to handle namespace
+    prefix for finding etags
+
+-- Michael Rasmussen <mir@datanom.net>  Sat, 27 Mar 2010 03:27:03 +0100
+
+libcaldav (0.4.2)
+  * Fix bug so that SSL specific settings are actually used.
+    Close bug 2971096.
+  * Fix bug so is-caldav and options are handled correct
+  * Applied help for new SSL settings to test application
+
+-- Michael Rasmussen <mir@datanom.net>  Sat, 27 Mar 2010 03:27:03 +0100
+
+libcaldav (0.4.1)
+  * Fix bug so that SSL specific errors are handled properly.
+    Close bug 2963143.
+  * Add option to build script to disable/enable building of
+    API documentation. Default is disabled.
+  * More cleaning up of the build system.
+  * Fix compile time warnings caused by gcc4.4 and minor change in
+    libcurl API.
+  * Add option to disable verification of peer's certificate
+  * Add option to specify custom CA cert file
+
+-- Michael Rasmussen <mir@datanom.net>  Sat, 7 Mar 2010 09:06:24 +0100
+
+libcaldav (0.4.0)
+  * Extend test client to be able to use both http and https
+  * Clean up some build instructions
+
+-- Michael Rasmussen <mir@datanom.net>  Sat, 27 Feb 2010 12:06:24 +0100
+
+libcaldav (0.3.1)
+  * Add https support
+  * make the useragent a configurable string, as some server doesn't like
+   'curl'
+
+-- Emmanuel Blindauer <e.blindauer@gmail.com> Fri Feb 26 20:49:16 CET 2010
+
+
+libcaldav (0.3.0)
+  * This version implements locking if the server supports this. Locking
+  will be done every time a request for modify or delete is sent to the
+  server
+  * 1) In ICalendar all plain text is wrapped inside DTD CDATA elements
+  * 2) ICalendar does not support collations for text-match in which case
+  collations has been removed from request - default is i;ascii-casemap anyhow
+
+-- Michael Rasmussen <mir@datanom.net>  Thu, 08 Apr 2008 00:06:24 +0100
+
+libcaldav (0.2.0)
+
+  * This version is a maintenance release due to important bugs.
+  * 1) Bugs found in XML which produced incorrect requests corrected
+  * 2) Added an option to configure to request dynamic or static library
+  * 3) Build system clean up
+  * 4) Discovered possible null pointers in error messages which is now
+       eliminated
+  * 5) Resolve bug in get_response_header which caused function to
+       change contents of variable in calling function
+  * 6) Added extra variable to get_response_header to decide whether returned
+       string should be all lower or not
+	7) Function get_tag can now also handle namespace prefix in tags
+	8) Added function caldav_getoptions to have a list of supported options
+	   by the server returned.
+  * 9) Compatibily tests run against Chandler and Apple's ICalendar
+       - Chandler: calendar-query not working due to bugs in Chandler's
+	     implementation of calendar-query which is not conforming to RFC4791
+	   - ICalendar: After adding namespace prefix awareness all test ran as
+	     expected.
+  * 10) The CLI test application upgraded to use new features.
+
+ -- Michael Rasmussen <mir@datanom.net>  Thu, 03 Apr 2008 10:10:00 +0100
+
+libcaldav (0.1.0)
+
+  * first public release
+
+ -- Michael Rasmussen <mir@datanom.net>  Tue, 25 Mar 2008 13:20:21 +0100
+
